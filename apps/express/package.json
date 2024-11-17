@@ -11,13 +11,14 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@dotenvx/dotenvx": "*",
     "express": "^4.21.0",
-    "@dotenvx/dotenvx": "*"
+    "groq-sdk": "^0.8.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^22.6.1",
-    "tsx": "*",
-    "tsup": "*"
+    "tsup": "*",
+    "tsx": "*"
   }
 }
