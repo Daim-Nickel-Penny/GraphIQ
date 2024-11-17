@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { HttpError } from "../errors/httpError";
-import createLogger from "../../logger";
+import createLogger from "../logger";
 
 const logger = createLogger("errorMiddleware.ts");
 

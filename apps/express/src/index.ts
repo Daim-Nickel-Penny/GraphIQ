@@ -1,20 +1,21 @@
 import express from "express";
+import cors from "cors";
 import path from "path";
 import dotenv from "@dotenvx/dotenvx";
-import fs from "fs";
+import router from "./router";
 
 dotenv.config({
-  path: path.join(__dirname, "../../../.env")
+  path: path.join(__dirname, "../../../.env"),
 });
+
+console.log("Resolved Path:", path.join(__dirname, "../../../.env"));
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
+app.use(cors());
 app.use(express.json());
-
-// Serve static files from the React frontend
-app.use(express.static(path.join(__dirname, "../../react/dist")));
 
 // Routes
 app.get("/api", (req, res) => {
@@ -25,21 +26,7 @@ app.get("/api/health", (req, res) => {
   res.send("OK");
 });
 
-// Fallback for React Router (unmatched routes)
-app.get("*", (req, res) => {
-  const filePath = path.join(__dirname, "../../react/dist", "index.html");
-
-  // Check if the file exists
-  fs.access(filePath, fs.constants.F_OK, (err) => {
-    if (err) {
-      // If file not found, send a fallback page or 404 response
-      res.status(404).send("Page not found");
-    } else {
-      // Serve the index.html if the file exists
-      res.sendFile(filePath);
-    }
-  });
-});
+app.use("/api/", router);
 
 // Start server
 app.listen(PORT, () => {
