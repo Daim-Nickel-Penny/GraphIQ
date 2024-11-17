@@ -8,29 +8,45 @@ const seedChatRequests = [
     createdAt: 1731851654692,
   },
   {
-    id: "23456789-abcd-ef12-3456-789012345678",
-    userPrompt: "hello",
-    createdAt: 1731851654693,
+    id: "1",
+    userPrompt:
+      "How can I identify significant communities within a large social network graph?",
+    createdAt: 1731851654692,
   },
   {
-    id: "abcdef12-3456-7890-abcd-ef1234567890",
-    userPrompt: "how are you?",
-    createdAt: 1731851654694,
+    id: "2",
+    userPrompt:
+      "What are some effective techniques for detecting anomalies or outliers in graph data?",
+    createdAt: 1731851654692,
   },
   {
-    id: "98765432-10fe-dcba-9876-543210fedcba",
-    userPrompt: "what's the weather like?",
-    createdAt: 1731851654695,
+    id: "3",
+    userPrompt:
+      "How can I measure the centrality of nodes in a graph to understand their importance?",
+    createdAt: 1731851654692,
   },
   {
-    id: "fedcba98-7654-3210-fedc-ba9876543210",
-    userPrompt: "can you help me with something?",
-    createdAt: 1731851654696,
+    id: "4",
+    userPrompt:
+      "What are the key challenges in analyzing dynamic graphs, and how can they be addressed?",
+    createdAt: 1731851654692,
   },
   {
-    id: "13579246-80df-6c3a-e7b9-1597531a8fc2",
-    userPrompt: "I have a question.",
-    createdAt: 1731851654697,
+    id: "5",
+    userPrompt:
+      "Can you recommend a suitable graph database for handling large-scale graph data?",
+    createdAt: 1731851654692,
+  },
+  {
+    id: "6",
+    userPrompt: "How can I extract meaningful insights from a knowledge graph?",
+    createdAt: 1731851654692,
+  },
+  {
+    id: "7",
+    userPrompt:
+      "What are some good datasets for practicing graph analysis techniques?",
+    createdAt: 1731851654692,
   },
 ];
 const seedChatResponses = [
@@ -43,43 +59,60 @@ const seedChatResponses = [
     timeTaken: 0.032978469,
   },
   {
-    id: "chatcmpl-12345678-90ab-cdef-1234-567890abcdef",
-    createdAt: "1/22/1970, 6:34:12 AM",
+    id: "1",
+    createdAt: "1/21/1970, 6:34:11 AM",
     model: "llama3-8b-8192",
     response:
-      "I can help you with that. Please provide me with the graph or dataset, and I'll analyze it for you.",
-    timeTaken: 0.045678901,
+      "There are several techniques to identify significant communities within a large social network graph, including community detection algorithms like Louvain Modularity, Label Propagation, and Infomap. These algorithms can help you uncover groups of nodes that are densely connected within the graph.",
+    timeTaken: 0.032978469,
   },
   {
-    id: "chatcmpl-abcdef12-3456-7890-abcdef-1234567890",
-    createdAt: "1/23/1970, 6:34:13 AM",
+    id: "2",
+    createdAt: "1/21/1970, 6:34:11 AM",
     model: "llama3-8b-8192",
     response:
-      "Here are some insights I found from the graph: [list of insights]",
-    timeTaken: 0.067890123,
+      "Anomaly detection in graph data can be approached using various methods, such as statistical anomaly detection, spectral clustering, and isolation forest. These techniques can help you identify nodes or edges that deviate significantly from the normal patterns within the graph.",
+    timeTaken: 0.032978469,
   },
   {
-    id: "chatcmpl-90abcdef-1234-5678-90ab-cdef12345678",
-    createdAt: "1/24/1970, 6:34:14 AM",
-    model: "llama3-8b-8192",
-    response: "Would you like to explore any of these insights further?",
-    timeTaken: 0.03456789,
-  },
-  {
-    id: "chatcmpl-cdef1234-5678-90ab-cdef-1234567890",
-    createdAt: "1/25/1970, 6:34:15 AM",
+    id: "3",
+    createdAt: "1/21/1970, 6:34:11 AM",
     model: "llama3-8b-8192",
     response:
-      "I can help you with that. Please let me know what you'd like to explore.",
-    timeTaken: 0.023456789,
+      "Node centrality measures like degree centrality, betweenness centrality, and eigenvector centrality can help you understand the importance of nodes within a graph. These measures can be used to identify influential nodes or hubs that play critical roles in the network.",
+    timeTaken: 0.032978469,
   },
   {
-    id: "chatcmpl-12345678-90ab-cdef-1234-567890abcdef",
-    createdAt: "1/26/1970, 6:34:16 AM",
+    id: "4",
+    createdAt: "1/21/1970, 6:34:11 AM",
     model: "llama3-8b-8192",
     response:
-      "I can also help you with other data analysis tasks. Just let me know what you need.",
-    timeTaken: 0.012345678,
+      "Analyzing dynamic graphs presents challenges like handling temporal changes, evolving relationships, and scalability. Techniques like temporal graph mining, time-aware community detection, and incremental graph algorithms can be employed to address these challenges.",
+    timeTaken: 0.032978469,
+  },
+  {
+    id: "5",
+    createdAt: "1/21/1970, 6:34:11 AM",
+    model: "llama3-8b-8192",
+    response:
+      "The choice of graph database depends on factors like data volume, query complexity, and performance requirements. Popular options include Neo4j, Amazon Neptune, and TigerGraph, each with its strengths and weaknesses.",
+    timeTaken: 0.032978469,
+  },
+  {
+    id: "6",
+    createdAt: "1/21/1970, 6:34:11 AM",
+    model: "llama3-8b-8192",
+    response:
+      "Extracting insights from a knowledge graph often involves techniques like knowledge graph embedding, path finding algorithms, and rule-based reasoning. These techniques can help you discover hidden relationships, identify anomalies, and make predictions.",
+    timeTaken: 0.032978469,
+  },
+  {
+    id: "7",
+    createdAt: "1/21/1970, 6:34:11 AM",
+    model: "llama3-8b-8192",
+    response:
+      "Some popular datasets for practicing graph analysis techniques include: * SNAP Datasets: Offers a variety of social networks, citation networks, and web graphs. * Cora and CiteSeer: Citation networks for academic papers. * Amazon Co-Purchasing Network: A network of products frequently bought together. * Protein-Protein Interaction Networks: Biological networks representing interactions between proteins.",
+    timeTaken: 0.067,
   },
 ];
 interface ChatStore {

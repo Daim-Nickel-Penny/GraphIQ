@@ -59,12 +59,8 @@ export default function ChatWindowOutput() {
         </>
       ) : (
         <div className="chat-window__output__greeting">
-          <img
-            className="chat-window__output__greeting__logo"
-            src="https://lucide.dev/logo.dark.svg"
-            alt="logo"
-          />
-          <h3>Hi, how can I help you today?</h3>
+          <Icon name="Shell" color="white" size="50px" />
+          <h3>Hi, got any graph questions?</h3>
         </div>
       )}
       {isLoading && (

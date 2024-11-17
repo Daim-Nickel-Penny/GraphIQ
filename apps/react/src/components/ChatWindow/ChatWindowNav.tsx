@@ -1,9 +1,13 @@
 interface ChatWindowNavProps {
-  greeting?: string;
+  greeting?: any;
 }
 
 export default function ChatWindowNav({
-  greeting = "Welcome to GraphIQ",
+  greeting = (
+    <div>
+      Welcome to <span style={{ color: "var(--active-green)" }}>GraphIQ</span>
+    </div>
+  ),
 }: ChatWindowNavProps) {
   return (
     <div className="chat-window__nav">
