@@ -1,172 +1,100 @@
 import { create } from "zustand";
 import { IChatResponse } from "../types/chatResponse";
 import { IChatRequest } from "../types/chatRequest";
-const seedChats = [
+const seedChatRequests = [
   {
-    id: "chat1",
-    createdAt: Date.now(),
-    model: "chatgpt-3.5",
-    responses: [
-      {
-        id: "response1",
-        createdAt: Date.now(),
-        model: "chatgpt-3.5",
-        response: "This is a sample response.",
-        timeTaken: 1200,
-      },
-    ],
-    requests: [
-      {
-        id: "jrj3-dfkj-234",
-        userPrompt: "What's the weather like today?",
-        createdAt: Date.now(),
-      },
-    ],
+    id: "857460e2-eda1-4460-b3dd-43a423974db0",
+    userPrompt: "hi",
+    createdAt: 1731851654692,
   },
   {
-    id: "chat2",
-    createdAt: Date.now(),
-    model: "chatgpt-4",
-    responses: [
-      {
-        id: "response2",
-        createdAt: Date.now(),
-        model: "chatgpt-4",
-        response:
-          "You will need to use the environment variables defined in .env.example to run Next.js AI Chatbot. It's recommended you use Vercel Environment Variables for this, but a .env file is all that is necessary. Note: You should not commit your .env file or it will expose secrets that will allow others to control access to your various OpenAI and authentication provider accounts. Install Vercel CLI: npm i -g vercel Link local instance with Vercel and GitHub accounts (creates .vercel directory): vercel link Download your environment variables: vercel env pull",
-        timeTaken: 1500,
-      },
-    ],
-    requests: [
-      {
-        id: "ikd=3-dfkj-234",
-        userPrompt: "Tell me a joke.",
-        createdAt: Date.now(),
-      },
-    ],
+    id: "23456789-abcd-ef12-3456-789012345678",
+    userPrompt: "hello",
+    createdAt: 1731851654693,
   },
   {
-    id: "chat3",
-    createdAt: Date.now(),
-    model: "bard", // Replace with the specific large language model used
-    responses: [
-      {
-        id: "response3",
-        createdAt: Date.now(),
-        model: "bard",
-        response: "What kind of music are you in the mood for today?",
-        timeTaken: 800,
-      },
-    ],
-    requests: [
-      {
-        id: "abc1-dfkj-234",
-        userPrompt: "Hey there! What can you do for me?",
-        createdAt: Date.now(),
-      },
-    ],
+    id: "abcdef12-3456-7890-abcd-ef1234567890",
+    userPrompt: "how are you?",
+    createdAt: 1731851654694,
   },
   {
-    id: "chat4",
-    createdAt: Date.now(),
-    model: "megatron-turing-nlg", // Replace with the specific large language model used
-    responses: [
-      {
-        id: "response4",
-        createdAt: Date.now(),
-        model: "megatron-turing-nlg",
-        response:
-          "The capital of France is Paris. Did you know the Eiffel Tower was built in 1889?",
-        timeTaken: 1300,
-      },
-    ],
-    requests: [
-      {
-        id: "def2-dfkj-234",
-        userPrompt: "What's the capital of France?",
-        createdAt: Date.now(),
-      },
-    ],
+    id: "98765432-10fe-dcba-9876-543210fedcba",
+    userPrompt: "what's the weather like?",
+    createdAt: 1731851654695,
   },
   {
-    id: "chat5",
-    createdAt: Date.now(),
-    model: "gpt-j-6b", // Replace with the specific large language model used
-    responses: [
-      {
-        id: "response5",
-        createdAt: Date.now(),
-        model: "gpt-j-6b",
-        response:
-          "Here are some upcoming events happening near you: Art Exhibition at City Hall, Concert in the Park, Food Truck Festival. Would you like details?",
-        timeTaken: 2000,
-      },
-    ],
-    requests: [
-      {
-        id: "ghi3-dfkj-234",
-        userPrompt: "What's going on around town this weekend?",
-        createdAt: Date.now(),
-      },
-    ],
+    id: "fedcba98-7654-3210-fedc-ba9876543210",
+    userPrompt: "can you help me with something?",
+    createdAt: 1731851654696,
   },
   {
-    id: "chat6",
-    createdAt: Date.now(),
-    model: "Jurassic-1 Jumbo", // Replace with the specific large language model used
-    responses: [
-      {
-        id: "response6",
-        createdAt: Date.now(),
-        model: "Jurassic-1 Jumbo",
-        response:
-          "I can translate between over 100 languages!  What language would you like to translate from and to?",
-        timeTaken: 900,
-      },
-    ],
-    requests: [
-      {
-        id: "jkl4-dfkj-234",
-        userPrompt: "Can you translate something for me?",
-        createdAt: Date.now(),
-      },
-    ],
-  },
-  {
-    id: "chat7",
-    createdAt: Date.now(),
-    model: "WuDao 2.0", // Replace with the specific large language model used
-    responses: [
-      {
-        id: "response7",
-        createdAt: Date.now(),
-        model: "WuDao 2.0",
-        response:
-          "Absolutely! I can help you write different kinds of creative text formats,  like poems, code, scripts, musical pieces, email, letters, etc. What would you like to try?",
-        timeTaken: 1700,
-      },
-    ],
-    requests: [
-      {
-        id: "mno5-dfkj-234",
-        userPrompt: "I need help writing something creative. Can you assist?",
-        createdAt: Date.now(),
-      },
-    ],
+    id: "13579246-80df-6c3a-e7b9-1597531a8fc2",
+    userPrompt: "I have a question.",
+    createdAt: 1731851654697,
   },
 ];
-
+const seedChatResponses = [
+  {
+    id: "chatcmpl-09243048-7631-4aa8-86e8-3ea78adf36d6",
+    createdAt: "1/21/1970, 6:34:11 AM",
+    model: "llama3-8b-8192",
+    response:
+      "Hi! How can I help you with analyzing a graph for research purposes and parsing important insights? Do you have a specific graph or dataset in mind that you'd like to work with?",
+    timeTaken: 0.032978469,
+  },
+  {
+    id: "chatcmpl-12345678-90ab-cdef-1234-567890abcdef",
+    createdAt: "1/22/1970, 6:34:12 AM",
+    model: "llama3-8b-8192",
+    response:
+      "I can help you with that. Please provide me with the graph or dataset, and I'll analyze it for you.",
+    timeTaken: 0.045678901,
+  },
+  {
+    id: "chatcmpl-abcdef12-3456-7890-abcdef-1234567890",
+    createdAt: "1/23/1970, 6:34:13 AM",
+    model: "llama3-8b-8192",
+    response:
+      "Here are some insights I found from the graph: [list of insights]",
+    timeTaken: 0.067890123,
+  },
+  {
+    id: "chatcmpl-90abcdef-1234-5678-90ab-cdef12345678",
+    createdAt: "1/24/1970, 6:34:14 AM",
+    model: "llama3-8b-8192",
+    response: "Would you like to explore any of these insights further?",
+    timeTaken: 0.03456789,
+  },
+  {
+    id: "chatcmpl-cdef1234-5678-90ab-cdef-1234567890",
+    createdAt: "1/25/1970, 6:34:15 AM",
+    model: "llama3-8b-8192",
+    response:
+      "I can help you with that. Please let me know what you'd like to explore.",
+    timeTaken: 0.023456789,
+  },
+  {
+    id: "chatcmpl-12345678-90ab-cdef-1234-567890abcdef",
+    createdAt: "1/26/1970, 6:34:16 AM",
+    model: "llama3-8b-8192",
+    response:
+      "I can also help you with other data analysis tasks. Just let me know what you need.",
+    timeTaken: 0.012345678,
+  },
+];
 interface ChatStore {
   chatRequests: IChatRequest[];
   chatResponses: IChatResponse[];
 
   addChatResponse: (response: IChatResponse) => void;
   addChatRequest: (request: IChatRequest) => void;
+  getLastChatResponse: () => IChatResponse | undefined;
+  getLastChatRequest: () => IChatRequest | undefined;
 }
 
-const useChatStore = create<ChatStore>((set) => ({
-  chatRequests: [],
-  chatResponses: [],
+const useChatStore = create<ChatStore>((set, get) => ({
+  chatRequests: seedChatRequests,
+  chatResponses: seedChatResponses,
 
   addChatRequest: (request: IChatRequest) =>
     set((state) => ({
@@ -176,6 +104,22 @@ const useChatStore = create<ChatStore>((set) => ({
     set((state) => ({
       chatResponses: [...state.chatResponses, response],
     })),
+
+  getLastChatResponse: () => {
+    const state = get();
+    const { chatResponses } = state;
+    return chatResponses.length > 0
+      ? chatResponses[chatResponses.length - 1]
+      : undefined;
+  },
+
+  getLastChatRequest: () => {
+    const state = get();
+    const { chatRequests } = state;
+    return chatRequests.length > 0
+      ? chatRequests[chatRequests.length - 1]
+      : undefined;
+  },
 }));
 
 export default useChatStore;

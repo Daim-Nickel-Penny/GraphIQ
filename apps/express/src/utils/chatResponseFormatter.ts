@@ -10,7 +10,7 @@ const formatter = (response: any): IChatResponse => {
     const { id, created, model, choices, usage } = response;
 
     //created is 1731837644 make it Date format
-    const createdAt = new Date(created).toLocaleString();
+    const createdAt = new Date(created * 1000).toLocaleString();
 
     const responseObj: IChatResponse = {
       id,

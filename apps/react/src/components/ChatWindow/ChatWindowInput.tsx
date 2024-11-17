@@ -14,6 +14,9 @@ export default function ChatWindowInput() {
   const setIsLoading = useLoadingChatStore((state) => state.setIsLoading);
   const addChatRequest = useChatStore((state) => state.addChatRequest);
   const addChatResponse = useChatStore((state) => state.addChatResponse);
+  const getLastChatResponse = useChatStore(
+    (state) => state.getLastChatResponse
+  );
 
   const resizeTextArea = () => {
     if (!textAreaRef.current) {
@@ -95,14 +98,36 @@ export default function ChatWindowInput() {
           resizeTextArea();
         }}
         onKeyDown={(e) => {
-          if (e.key === "Enter" && !e.shiftKey) {
-            handleSubmitUserPrompt();
+          if (e.key === "Enter") {
+            if (e.shiftKey) {
+              e.preventDefault();
+              const newValue = value + "\n";
+              setValue(newValue);
+            } else {
+              e.preventDefault();
+              handleSubmitUserPrompt();
+            }
           }
         }}
       ></textarea>
       <div className="chat-window__statusbar">
         <div className="chat-window__statusbar__icon">
           <Icon name="Menu" color="white" size="15px" />
+        </div>
+        <div className="chat-window__statusbar__stats">
+          {getLastChatResponse() && (
+            <div className="chat-window__statusbar__stats__response">
+              <span className="stats-model">
+                {getLastChatResponse()?.model}
+              </span>
+              took
+              <span className="stats-timetaken">
+                {getLastChatResponse()?.timeTaken &&
+                  getLastChatResponse()?.timeTaken.toFixed(2)}
+                s
+              </span>
+            </div>
+          )}
         </div>
         <div
           className="chat-window__statusbar__submit"

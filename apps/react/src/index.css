@@ -13,6 +13,7 @@
 
 body {
   background-color: var(--background-color);
+  /* background-image: url("./assets/bg.jpg"); */
   color: white;
   font-family: "Geist", sans-serif;
 }

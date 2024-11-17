@@ -15,7 +15,7 @@ GraphIQ is tool designed to streamline graph analysis. It allows you to upload g
 
 GraphIQ utilizes a monorepo setup powered by **Turborepo**, enabling seamless development and build management:
 
-- **React Frontend**: Built using **Vite** for a fast and modern frontend development experience.
+- **React Frontend**: Built using **Vite** for a fast and modern frontend development experience. Also use **Zustand** for state management.
 - **Express.js Backend**: Provides robust API endpoints and serves static assets in production.
 
 ### ✨ Key Highlights

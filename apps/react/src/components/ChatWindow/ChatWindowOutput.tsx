@@ -28,6 +28,11 @@ export default function ChatWindowOutput() {
   const { chatRequests, chatResponses } = useChatStore();
   const { isLoading } = useLoadingChatStore();
 
+  useEffect(() => {
+    console.log(chatRequests);
+    console.log(chatResponses);
+  }, [chatRequests, chatResponses]);
+
   return (
     <div className="chat-window__output" key={"chat-window-output"}>
       {chatRequests && chatRequests.length > 0 ? (
