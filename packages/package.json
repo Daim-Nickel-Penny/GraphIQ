@@ -1,0 +1,6 @@
+{
+  "name": "@graphiq/types",
+  "version": "1.0.0",
+  "main": "./chatResponse.d.ts",
+  "type": "module"
+}

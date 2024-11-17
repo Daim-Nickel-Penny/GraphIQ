@@ -1,6 +1,8 @@
 import { MODELS } from "@/constants/models.constatnts";
 import { SYSTEM_PROMPS } from "@/constants/prompts.constant";
+import { HttpError } from "@/errors/httpError";
 import { GROQ_API_KEY } from "@/key";
+import chatResponseFormatter from "@/utils/chatResponseFormatter";
 import Groq from "groq-sdk";
 
 const groq = new Groq({
@@ -9,7 +11,7 @@ const groq = new Groq({
 
 const getGroqChatCompletion = async (userPrompt: string) => {
   try {
-    const response = groq.chat.completions.create({
+    const response = await groq.chat.completions.create({
       model: MODELS.LLAMA_3_8B_8192,
       messages: [
         {
@@ -29,7 +31,13 @@ const getGroqChatCompletion = async (userPrompt: string) => {
       stream: false,
     });
 
-    return response;
+    if (!response) {
+      throw new HttpError("Response is empty", 400);
+    }
+
+    const formattedResponse = chatResponseFormatter.formatter(response);
+
+    return formattedResponse;
   } catch (error) {
     throw error;
   }
