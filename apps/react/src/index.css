@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+:root {
+  --background-color: #121212;
+  --grey: #1c1c1c;
+  --light-grey: #151515;
+  --very-light-grey: rgb(229, 231, 235, 0.2);
+  --navy-blue: #001f3f;
+  --active-pink: #cd346c;
+  --active-purple: #9900ef;
+  --light-pink: #e04f9f;
+  --active-green: #3d9970;
+}
+
+body {
+  background-color: var(--background-color);
+  color: white;
+  font-family: "Geist", sans-serif;
+}

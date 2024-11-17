@@ -1,0 +1,6 @@
+/*Make the chat window take up the entier viewport and not scroll*/
+.chat {
+  width: 100%;
+  height: 95vh;
+  overflow: hidden;
+}

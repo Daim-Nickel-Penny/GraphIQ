@@ -1,0 +1,33 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar__logo {
+  width: 25px;
+  height: 25px;
+
+  padding: 10px;
+  filter: grayscale(1);
+}
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar__link {
+  padding: 10px;
+
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+
+  transition: background-color 0.3s ease;
+}
+
+.navbar__link:hover {
+  background-color: var(--grey);
+  border-radius: 5px;
+}
