@@ -15,11 +15,13 @@
     "cors": "^2.8.5",
     "express": "^4.21.0",
     "groq-sdk": "^0.8.0",
+    "leo-profanity": "^1.7.0",
     "winston": "^3.17.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
+    "@types/leo-profanity": "^1.5.4",
     "@types/node": "^22.6.1",
     "tsup": "*",
     "tsx": "*"

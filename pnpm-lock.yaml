@@ -39,6 +39,9 @@ importers:
       groq-sdk:
         specifier: ^0.8.0
         version: 0.8.0
+      leo-profanity:
+        specifier: ^1.7.0
+        version: 1.7.0
       winston:
         specifier: ^3.17.0
         version: 3.17.0
@@ -49,6 +52,9 @@ importers:
       '@types/express':
         specifier: ^4.17.21
         version: 4.17.21
+      '@types/leo-profanity':
+        specifier: ^1.5.4
+        version: 1.5.4
       '@types/node':
         specifier: ^22.6.1
         version: 22.6.1
@@ -685,6 +691,9 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
+  '@types/leo-profanity@1.5.4':
+    resolution: {integrity: sha512-f6PiIeXhT14VM6P06MIuzEG9JpcZ3CgjDbV8Rx5fQPkL1A8Zk3dFQRqFr/x1eQlshRFfBorpuzVnfDC042KY8A==}
+
   '@types/mime@1.3.5':
     resolution: {integrity: sha512-/pyBZWSLD2n0dcHE3hq8s8ZvcETHtEuF+3E7XVt0Ig2nvsVQXdghHVcEkIWjy9A0wKfTn97a/PSDYohKIlnP/w==}
 
@@ -1198,6 +1207,9 @@ packages:
     resolution: {integrity: sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==}
     engines: {node: '>= 0.6'}
 
+  french-badwords-list@1.0.7:
+    resolution: {integrity: sha512-H1ziKs2PJh2+UXZ9oCGJ/rRQpsI9NBykGf2Sc7WaKaj1OnWFuBXfsvANTdRcfVmOghGQaUmRyZ1hJOPbDpy04Q==}
+
   fresh@0.5.2:
     resolution: {integrity: sha512-zJ2mQYM18rEFOudeV4GShTGIQ7RbzA7ozbU9I/XBpm7kqgMywgmylMwXHxZJmkVoYkna9d2pVXVXPdYTP9ej8Q==}
     engines: {node: '>= 0.6'}
@@ -1369,6 +1381,9 @@ packages:
 
   kuler@2.0.0:
     resolution: {integrity: sha512-Xq9nH7KlWZmXAtodXDDRE7vs6DU1gTU8zYDHDiWLSip45Egwq3plLHzPn27NgvzL2r1LMPC1vdqh98sQxtqj4A==}
+
+  leo-profanity@1.7.0:
+    resolution: {integrity: sha512-88j1R08jrQzOib9Yxk4nxrzMlrHJi3DzFzAmv0L4APQ+ciGEfJ1rftVEvFjoqL0m+0KGFL3csQGRlxXGnYrA7w==}
 
   levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
@@ -1678,6 +1693,10 @@ packages:
 
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
+
+  russian-bad-words@0.5.0:
+    resolution: {integrity: sha512-euNvEYki6iYYpkNbeudW+lEMMYGEmN7EBwVF8ezlbv0bZoQpVYB7W10cCeUIGV7Ed50sJynLQ0c559q5iI0ejQ==}
+    engines: {node: '>=10'}
 
   safe-buffer@5.2.1:
     resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
@@ -2424,6 +2443,8 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
+  '@types/leo-profanity@1.5.4': {}
+
   '@types/mime@1.3.5': {}
 
   '@types/node-fetch@2.6.12':
@@ -3054,6 +3075,9 @@ snapshots:
 
   forwarded@0.2.0: {}
 
+  french-badwords-list@1.0.7:
+    optional: true
+
   fresh@0.5.2: {}
 
   fsevents@2.3.3:
@@ -3208,6 +3232,11 @@ snapshots:
       json-buffer: 3.0.1
 
   kuler@2.0.0: {}
+
+  leo-profanity@1.7.0:
+    optionalDependencies:
+      french-badwords-list: 1.0.7
+      russian-bad-words: 0.5.0
 
   levn@0.4.1:
     dependencies:
@@ -3472,6 +3501,9 @@ snapshots:
   run-parallel@1.2.0:
     dependencies:
       queue-microtask: 1.2.3
+
+  russian-bad-words@0.5.0:
+    optional: true
 
   safe-buffer@5.2.1: {}
 
