@@ -29,9 +29,9 @@ GraphIQ utilizes a monorepo setup powered by **Turborepo**, enabling seamless de
 
 ## Gallery
 
-<img src="./assets/demo/screen-1.png" alt="screen-intro" width="500" />
-<img src="./assets/demo/screen-2.png" alt="inital-chat" width="500" />
-<img src="./assets/demo/screen-3.png" alt="chat-window" width="500" />
+<img src="./assets/demo/screen-1.png" alt="screen-intro" width="1000" />
+<img src="./assets/demo/screen-2.png" alt="inital-chat" width="1000" />
+<img src="./assets/demo/screen-3.png" alt="chat-window" width="1000" />
 
 ---
 
