@@ -1,5 +1,5 @@
-import { HttpError } from "@/errors/httpError";
-import { IChatResponse } from "@/types/chatResponse";
+import { HttpError } from "../errors/httpError";
+import { IChatResponse } from "../types/chatResponse";
 
 const formatter = (response: any): IChatResponse => {
   try {
@@ -20,6 +20,7 @@ const formatter = (response: any): IChatResponse => {
       timeTaken: usage.total_time,
     };
 
+    console.log(responseObj);
     return responseObj;
   } catch (error) {
     throw new HttpError("Error formatting chat response", 400);
