@@ -42,7 +42,7 @@ GraphIQ utilizes a monorepo setup powered by **Turborepo**, enabling seamless de
   /react      # Frontend React application
   /express    # Backend Express.js application
 /packages
-  /shared     # Shared code or utilities (if any)
+  /shared     # Shared code
 ```
 
 ## Setup and Installation
