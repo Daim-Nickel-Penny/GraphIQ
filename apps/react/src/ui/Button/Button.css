@@ -1,0 +1,15 @@
+.button {
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button__outlined {
+  background-color: transparent;
+  border: 1px solid var(--very-light-grey);
+  color: white;
+}
