@@ -35,4 +35,34 @@ const getVisionChatCompletion = async (
   }
 };
 
-export default { getChatCompletion, getVisionChatCompletion };
+const getChatCompletionBasedOnBody = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    if (!req.body?.base64Image) {
+      console.log("Calling text based model");
+      const { userPrompt } = req.body;
+      const response = await chatService.getGroqChatCompletion(userPrompt);
+
+      res.status(200).json(response);
+    } else {
+      console.log("Calling vision based model");
+      const { userPrompt, base64Image } = req.body;
+      const response = await visionChatService.getGroqVisionChatCompletion(
+        userPrompt,
+        base64Image
+      );
+      res.status(200).json(response);
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+export default {
+  getChatCompletion,
+  getVisionChatCompletion,
+  getChatCompletionBasedOnBody,
+};

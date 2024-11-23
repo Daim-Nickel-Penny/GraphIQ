@@ -29,14 +29,36 @@ const ChatRequestComponent = ({
   );
 };
 
+const makeTextBold = (text: string) => {
+  const bold = /\*\*(.*?)\*\*/gm;
+  const boldText = text.replace(bold, "<strong>$1</strong>");
+  return boldText;
+};
+
+const makeList = (text: string) => {
+  //replace all * with <br/>
+  text = text.replace(/\*/gm, "<br/> -");
+  return text;
+};
+
 const ChatResponseComponent = ({ id, response }: IChatResponse) => {
+  response = makeTextBold(response);
+  response = makeList(response);
+
   return (
     <div className="chat-window__chat-response" key={id}>
       <div className="chat-window__chat-response__icon">
         <Icon name="Sparkles" color="white" size="20px" />
       </div>
 
-      <div className="chat-window__chat-response__content">{response}</div>
+      <div
+        className="chat-window__chat-response__content"
+        dangerouslySetInnerHTML={{ __html: response }}
+      >
+        {
+          //set response as innerHTML
+        }
+      </div>
     </div>
   );
 };

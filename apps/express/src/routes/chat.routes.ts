@@ -16,4 +16,10 @@ router.post(
   chatController.getVisionChatCompletion
 );
 
+router.post(
+  "/get-chat",
+  userPromptMiddleware.userPromptMiddleware,
+  chatController.getChatCompletionBasedOnBody
+);
+
 export default router;

@@ -18,10 +18,6 @@ async function getGroqVisionChatCompletion(
     const chatCompletion = await groq.chat.completions.create({
       messages: [
         {
-          role: "system",
-          content: SYSTEM_PROMPS.SYSTEM_PROMOT_FOR_VISION_CHAT,
-        },
-        {
           role: "user",
           content: [
             {
@@ -29,9 +25,13 @@ async function getGroqVisionChatCompletion(
               text: userPrompt,
             },
             {
+              type: "text",
+              text: SYSTEM_PROMPS.SYSTEM_PROMPT_FOR_CHAT,
+            },
+            {
               type: "image_url",
               image_url: {
-                url: `data:image/jpeg;base64,${base64Image}`,
+                url: `${base64Image}`,
               },
             },
           ],

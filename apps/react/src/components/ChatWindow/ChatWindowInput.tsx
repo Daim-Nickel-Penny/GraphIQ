@@ -4,6 +4,7 @@ import { API_ENDPOINTS } from "../../constants/apiEndpoints";
 import { IChatResponse } from "../../types/chatResponse";
 import useLoadingChatStore from "../../stores/loadingChatStore";
 import useChatStore from "../../stores/chatStore";
+import { encode } from "js-base64";
 
 import { v4 as uuidv4 } from "uuid";
 import { IChatRequest } from "../../types/chatRequest";
@@ -35,13 +36,17 @@ export default function ChatWindowInput() {
 
   const handleImageDrop = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
+
     setDragging(false);
+
     const file = event.dataTransfer.files[0];
+
     if (file && file.type.startsWith("image/")) {
       const reader = new FileReader();
       reader.onload = () => {
         if (reader.result) {
           setBase64Image(reader.result as string);
+          // console.log(reader.result);
         }
       };
       reader.readAsDataURL(file);
@@ -92,7 +97,7 @@ export default function ChatWindowInput() {
     };
     try {
       const response = await fetch(
-        `${API_ENDPOINTS.baseUrl}/chats/get-chat-completion`,
+        `${API_ENDPOINTS.baseUrl}/chats/get-chat`,
         options
       );
 
