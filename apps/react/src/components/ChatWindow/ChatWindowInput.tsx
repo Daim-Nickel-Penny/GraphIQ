@@ -4,7 +4,6 @@ import { API_ENDPOINTS } from "../../constants/apiEndpoints";
 import { IChatResponse } from "../../types/chatResponse";
 import useLoadingChatStore from "../../stores/loadingChatStore";
 import useChatStore from "../../stores/chatStore";
-import { encode } from "js-base64";
 
 import { v4 as uuidv4 } from "uuid";
 import { IChatRequest } from "../../types/chatRequest";
@@ -18,6 +17,9 @@ export default function ChatWindowInput() {
   const setIsLoading = useLoadingChatStore((state) => state.setIsLoading);
   const addChatRequest = useChatStore((state) => state.addChatRequest);
   const addChatResponse = useChatStore((state) => state.addChatResponse);
+  const getLast10ChatAsContext = useChatStore(
+    (state) => state.getLast10ChatAsContext
+  );
 
   const getLastChatResponse = useChatStore(
     (state) => state.getLastChatResponse
@@ -85,6 +87,15 @@ export default function ChatWindowInput() {
       body = {
         ...body,
         base64Image,
+      };
+    }
+
+    const context = getLast10ChatAsContext();
+
+    if (context) {
+      body = {
+        ...body,
+        context,
       };
     }
 
@@ -183,6 +194,7 @@ export default function ChatWindowInput() {
           }
         }}
       ></textarea>
+
       <div className="chat-window__statusbar">
         <div className="chat-window__statusbar__icon">
           <Icon name="Menu" color="white" size="15px" />

@@ -125,6 +125,7 @@ interface ChatStore {
   addChatRequest: (request: IChatRequest) => void;
   getLastChatResponse: () => IChatResponse | undefined;
   getLastChatRequest: () => IChatRequest | undefined;
+  getLast10ChatAsContext: () => string | undefined;
 }
 
 const useChatStore = create<ChatStore>((set, get) => ({
@@ -154,6 +155,40 @@ const useChatStore = create<ChatStore>((set, get) => ({
     return chatRequests.length > 0
       ? chatRequests[chatRequests.length - 1]
       : undefined;
+  },
+
+  getLast10ChatAsContext: () => {
+    const state = get();
+    const { chatRequests, chatResponses } = state;
+
+    const last10ChatRequests = chatRequests.slice(-5);
+    const last10ChatResponses = chatResponses.slice(-5);
+
+    let context = "";
+
+    if (last10ChatRequests?.length === 0 || last10ChatResponses?.length === 0) {
+      return context;
+    }
+
+    last10ChatRequests.forEach((request) => {
+      context += request.userPrompt + " ";
+    });
+
+    last10ChatResponses.forEach((response) => {
+      context += response.response + " ";
+    });
+
+    context = context.replace(/\s+/g, " ").trim();
+
+    //replace all symbols with empty space
+    context = context.replace(/[^a-zA-Z0-9 ]/g, " ");
+    //remove all spaces
+    context = context.replace(/ /g, "");
+    if (context.length > 500) {
+      context = context.slice(0, 500);
+    }
+
+    return context;
   },
 }));
 

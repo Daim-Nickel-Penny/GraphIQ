@@ -9,7 +9,7 @@ const getChatCompletion = async (
 ) => {
   try {
     const { userPrompt } = req.body;
-    const response = await chatService.getGroqChatCompletion(userPrompt);
+    const response = await chatService.getGroqChatCompletion(userPrompt, "");
 
     res.status(200).json(response);
   } catch (error) {
@@ -26,7 +26,8 @@ const getVisionChatCompletion = async (
     const { userPrompt, base64Image } = req.body;
     const response = await visionChatService.getGroqVisionChatCompletion(
       userPrompt,
-      base64Image
+      base64Image,
+      ""
     );
 
     res.status(200).json(response);
@@ -41,10 +42,19 @@ const getChatCompletionBasedOnBody = async (
   next: NextFunction
 ) => {
   try {
+    let context = "";
+
+    if (req.body?.context) {
+      context = req.body.context;
+    }
+
     if (!req.body?.base64Image) {
       console.log("Calling text based model");
       const { userPrompt } = req.body;
-      const response = await chatService.getGroqChatCompletion(userPrompt);
+      const response = await chatService.getGroqChatCompletion(
+        userPrompt,
+        context
+      );
 
       res.status(200).json(response);
     } else {
@@ -52,7 +62,8 @@ const getChatCompletionBasedOnBody = async (
       const { userPrompt, base64Image } = req.body;
       const response = await visionChatService.getGroqVisionChatCompletion(
         userPrompt,
-        base64Image
+        base64Image,
+        context
       );
       res.status(200).json(response);
     }

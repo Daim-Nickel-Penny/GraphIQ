@@ -1,6 +1,6 @@
 import Groq from "groq-sdk";
 import { MODELS } from "src/constants/models.constatnts";
-import { SYSTEM_PROMPS } from "src/constants/prompts.constant";
+import { SYSTEM_PROMPTS } from "src/constants/prompts.constant";
 import { HttpError } from "src/errors/httpError";
 import { GROQ_API_KEY } from "src/key";
 import { IChatResponse } from "src/types/chatResponse";
@@ -12,9 +12,13 @@ const groq = new Groq({
 
 async function getGroqVisionChatCompletion(
   userPrompt: string,
-  base64Image: string
+  base64Image: string,
+  context: string
 ): Promise<IChatResponse> {
   try {
+    if (context.length > 0) {
+      userPrompt = `The context of previous chat is ${context}. \n New User Prompt: ${userPrompt}`;
+    }
     const chatCompletion = await groq.chat.completions.create({
       messages: [
         {
@@ -26,7 +30,7 @@ async function getGroqVisionChatCompletion(
             },
             {
               type: "text",
-              text: SYSTEM_PROMPS.SYSTEM_PROMPT_FOR_CHAT,
+              text: SYSTEM_PROMPTS.SYSTEM_PROMPT_FOR_VISION_CHAT,
             },
             {
               type: "image_url",
