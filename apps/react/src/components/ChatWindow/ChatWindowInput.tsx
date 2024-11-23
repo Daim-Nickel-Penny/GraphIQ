@@ -6,14 +6,18 @@ import useLoadingChatStore from "../../stores/loadingChatStore";
 import useChatStore from "../../stores/chatStore";
 
 import { v4 as uuidv4 } from "uuid";
+import { IChatRequest } from "../../types/chatRequest";
 
 export default function ChatWindowInput() {
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
   const [value, setValue] = useState("");
+  const [base64Image, setBase64Image] = useState<string | null>(null);
+  const [dragging, setDragging] = useState(false);
 
   const setIsLoading = useLoadingChatStore((state) => state.setIsLoading);
   const addChatRequest = useChatStore((state) => state.addChatRequest);
   const addChatResponse = useChatStore((state) => state.addChatResponse);
+
   const getLastChatResponse = useChatStore(
     (state) => state.getLastChatResponse
   );
@@ -29,21 +33,55 @@ export default function ChatWindowInput() {
     }px`;
   };
 
+  const handleImageDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    setDragging(false);
+    const file = event.dataTransfer.files[0];
+    if (file && file.type.startsWith("image/")) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (reader.result) {
+          setBase64Image(reader.result as string);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleImageRemove = () => {
+    setBase64Image(null);
+  };
+
   const handleSubmitUserPrompt = async () => {
     if (!value.trim()) return;
 
     setIsLoading(true);
 
-    const newChatRequest = {
+    let newChatRequest: IChatRequest = {
       id: uuidv4(),
       userPrompt: value.trim(),
       createdAt: Date.now(),
     };
+
+    if (base64Image) {
+      newChatRequest = {
+        ...newChatRequest,
+        base64Image,
+      };
+    }
+
     addChatRequest(newChatRequest);
 
-    const body = {
+    let body: Partial<IChatRequest> = {
       userPrompt: value.trim(),
     };
+
+    if (base64Image) {
+      body = {
+        ...body,
+        base64Image,
+      };
+    }
 
     const options = {
       method: "POST",
@@ -77,6 +115,7 @@ export default function ChatWindowInput() {
     }
 
     setValue("");
+    setBase64Image(null);
   };
 
   useEffect(() => {
@@ -88,6 +127,35 @@ export default function ChatWindowInput() {
   }, []);
   return (
     <div className="chat-window__input">
+      <div
+        className={`chat-window__dropzone ${dragging ? "dragging" : ""}`}
+        onDragOver={(e) => {
+          e.preventDefault();
+          setDragging(true);
+        }}
+        onDragLeave={() => setDragging(false)}
+        onDrop={handleImageDrop}
+      >
+        {base64Image ? (
+          <div className="chat-window__image-preview">
+            <img
+              className="chat-window__chat-request__image"
+              src={base64Image}
+              alt="Uploaded"
+            />
+            <button
+              className="chat-window__image-preview__remove"
+              onClick={handleImageRemove}
+            >
+              Remove
+            </button>
+          </div>
+        ) : (
+          <div className="chat-window__dropzone__placeholder">
+            Drag and drop an image here!
+          </div>
+        )}
+      </div>
       <textarea
         className="chat-window__textarea"
         placeholder="Ask GraphIQ anything..."

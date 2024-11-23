@@ -1,9 +1,9 @@
-import { MODELS } from "@/constants/models.constatnts";
-import { SYSTEM_PROMPS } from "@/constants/prompts.constant";
-import { HttpError } from "@/errors/httpError";
-import { GROQ_API_KEY } from "@/key";
-import chatResponseFormatter from "@/utils/chatResponseFormatter";
 import Groq from "groq-sdk";
+import { MODELS } from "src/constants/models.constatnts";
+import { SYSTEM_PROMPS } from "src/constants/prompts.constant";
+import { HttpError } from "src/errors/httpError";
+import { GROQ_API_KEY } from "src/key";
+import chatResponseFormatter from "src/utils/chatResponseFormatter";
 
 const groq = new Groq({
   apiKey: GROQ_API_KEY,

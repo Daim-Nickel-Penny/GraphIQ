@@ -5,10 +5,26 @@ import { IChatRequest } from "../../types/chatRequest";
 import { IChatResponse } from "../../types/chatResponse";
 import Icon from "../Icon/Icon";
 
-const ChatRequestComponent = ({ userPrompt, id }: IChatRequest) => {
+// import { encode, decode } from "js-base64";
+
+const ChatRequestComponent = ({
+  userPrompt,
+  id,
+  base64Image,
+}: IChatRequest) => {
   return (
     <div className="chat-window__chat-request" key={id}>
-      <div className="chat-window__chat-request__content">{userPrompt}</div>
+      <div className="chat-window__chat-request__content">
+        {userPrompt}
+
+        {base64Image && (
+          <img
+            className="chat-window__chat-request__image"
+            src={base64Image}
+            alt="chat-window__chat-request__image"
+          />
+        )}
+      </div>
     </div>
   );
 };
@@ -19,6 +35,7 @@ const ChatResponseComponent = ({ id, response }: IChatResponse) => {
       <div className="chat-window__chat-response__icon">
         <Icon name="Sparkles" color="white" size="20px" />
       </div>
+
       <div className="chat-window__chat-response__content">{response}</div>
     </div>
   );
@@ -28,10 +45,10 @@ export default function ChatWindowOutput() {
   const { chatRequests, chatResponses } = useChatStore();
   const { isLoading } = useLoadingChatStore();
 
-  useEffect(() => {
-    console.log(chatRequests);
-    console.log(chatResponses);
-  }, [chatRequests, chatResponses]);
+  // useEffect(() => {
+  //   console.log(chatRequests);
+  //   console.log(chatResponses);
+  // }, [chatRequests, chatResponses]);
 
   return (
     <div className="chat-window__output" key={"chat-window-output"}>
@@ -42,6 +59,7 @@ export default function ChatWindowOutput() {
               <ChatRequestComponent
                 userPrompt={request.userPrompt}
                 id={request.id}
+                base64Image={request?.base64Image}
                 createdAt={request.createdAt}
               />
 

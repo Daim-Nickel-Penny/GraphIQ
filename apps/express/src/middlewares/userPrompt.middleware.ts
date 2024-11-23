@@ -1,4 +1,4 @@
-import { HttpError } from "@/errors/httpError";
+import { HttpError } from "../errors/httpError";
 import { NextFunction, Request, Response } from "express";
 import * as filter from "leo-profanity";
 /**
