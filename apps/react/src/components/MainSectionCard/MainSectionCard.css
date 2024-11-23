@@ -1,0 +1,33 @@
+.main-section__title {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  user-select: none;
+}
+
+.main-section-card {
+  width: 350px;
+
+  background-color: var(--light-grey);
+  border-radius: 10px;
+
+  transition: all 0.3s ease-in-out;
+
+  user-select: none;
+}
+
+.main-section-card__image {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.main-section-card__title {
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.main-section-card:hover {
+  background-color: #030303;
+}

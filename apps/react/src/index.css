@@ -17,3 +17,17 @@ body {
   color: white;
   font-family: "Geist", sans-serif;
 }
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--light-grey);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--grey);
+  border-radius: 10px;
+  border: 2px solid var(--active-pink);
+}
