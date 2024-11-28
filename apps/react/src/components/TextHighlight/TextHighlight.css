@@ -5,4 +5,14 @@
   text-align: center;
   font-weight: 500;
   line-height: 1.3;
+  user-select: none;
+  opacity: 0.8;
+}
+
+/** Media Queries for small screens */
+@media screen and (max-width: 600px) {
+  .text-highlight {
+    font-size: 40px;
+    padding: 20px 10px;
+  }
 }

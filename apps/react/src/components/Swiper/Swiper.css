@@ -1,0 +1,129 @@
+.swiper {
+  margin-left: 50px;
+}
+
+.swiper__cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  margin-top: 50px;
+  padding-right: 20px;
+}
+
+.swiperCard__wrapper-pagination {
+  display: flex;
+  flex-direction: column;
+
+  text-align: left;
+}
+
+.swiper__card-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+
+  margin: 50px 0px;
+
+  cursor: pointer;
+}
+
+.swiper__card-wrapper > * {
+  transition: opacity 0.2s ease-in-out;
+}
+
+/*Change all children opacity to 0 on hover*/
+.swiper__card-wrapper:hover > * {
+  opacity: 1;
+}
+
+.left-bar-div {
+  background-color: white;
+  opacity: 0.4;
+  border-radius: 100rem;
+
+  width: 4px;
+  height: 24px;
+}
+
+/*add darkened overlay on image*/
+
+.swiper-card {
+  position: relative;
+
+  width: 800px;
+  max-width: 100%;
+  height: 500px;
+  max-height: 100%;
+
+  background-color: var(--background-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  user-select: none;
+}
+
+.swiper-card__image {
+  width: 100%;
+  height: 100%;
+
+  max-width: 800px;
+  max-height: 500px;
+
+  object-fit: cover;
+  opacity: 0.9;
+
+  transition: opacity 0.5s ease;
+
+  user-select: none;
+  pointer-events: none;
+}
+
+.swiper-card::after {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), #121212 90%);
+
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.5s ease;
+}
+
+.swiper-card:hover .swiper-card__image {
+  opacity: 1;
+}
+
+.swiper-card:hover::after {
+  opacity: 1;
+}
+
+/** Media Queries for small screens */
+@media screen and (max-width: 600px) {
+  .swiper__cards {
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    margin-top: 0px;
+    margin-left: 0px;
+    padding-right: 0px;
+  }
+
+  .swiper__card-wrapper {
+    margin: 10px 0px;
+  }
+
+  .swiperCard__wrapper-pagination {
+    justify-content: flex-start;
+  }
+}
