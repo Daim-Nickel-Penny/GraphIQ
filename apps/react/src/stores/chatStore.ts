@@ -161,8 +161,8 @@ const useChatStore = create<ChatStore>((set, get) => ({
     const state = get();
     const { chatRequests, chatResponses } = state;
 
-    const last10ChatRequests = chatRequests.slice(-5);
-    const last10ChatResponses = chatResponses.slice(-5);
+    const last10ChatRequests = chatRequests.slice(-10);
+    const last10ChatResponses = chatResponses.slice(-10);
 
     let context = "";
 
@@ -184,8 +184,8 @@ const useChatStore = create<ChatStore>((set, get) => ({
     context = context.replace(/[^a-zA-Z0-9 ]/g, " ");
     //remove all spaces
     context = context.replace(/ /g, "");
-    if (context.length > 500) {
-      context = context.slice(0, 500);
+    if (context.length > 900) {
+      context = context.slice(0, 900);
     }
 
     return context;

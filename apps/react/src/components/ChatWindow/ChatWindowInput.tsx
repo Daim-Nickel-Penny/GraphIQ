@@ -35,7 +35,6 @@ export default function ChatWindowInput() {
       textAreaRef.current.scrollHeight - 30
     }px`;
   };
-
   const handleImageDrop = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
 
@@ -45,12 +44,56 @@ export default function ChatWindowInput() {
 
     if (file && file.type.startsWith("image/")) {
       const reader = new FileReader();
+
       reader.onload = () => {
         if (reader.result) {
-          setBase64Image(reader.result as string);
-          // console.log(reader.result);
+          // Check the size of the file in bytes
+          const fileSize = file.size;
+
+          if (fileSize > 3.5 * 1024 * 1024) {
+            const img = new Image();
+            img.onload = () => {
+              const canvas = document.createElement("canvas");
+              const ctx = canvas.getContext("2d");
+
+              let { width, height } = img;
+              const maxSize = 1000; // Set a reasonable dimension limit for the resized image.
+
+              if (width > maxSize || height > maxSize) {
+                if (width > height) {
+                  height = (height / width) * maxSize;
+                  width = maxSize;
+                } else {
+                  width = (width / height) * maxSize;
+                  height = maxSize;
+                }
+              }
+
+              canvas.width = width;
+              canvas.height = height;
+
+              ctx?.drawImage(img, 0, 0, width, height);
+
+              // Compress the image
+              let quality = 0.9; // Start with 90% quality
+              let base64Image = canvas.toDataURL("image/jpeg", quality);
+
+              while (base64Image.length > 3.5 * 1024 * 1024 && quality > 0.1) {
+                quality -= 0.1; // Reduce quality by 10%
+                base64Image = canvas.toDataURL("image/jpeg", quality);
+              }
+
+              setBase64Image(base64Image);
+            };
+
+            img.src = reader.result as string;
+          } else {
+            // If the file is less than or equal to 3.5 MB, set it directly
+            setBase64Image(reader.result as string);
+          }
         }
       };
+
       reader.readAsDataURL(file);
     }
   };

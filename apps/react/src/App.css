@@ -1,5 +1,8 @@
 .app {
-  background-image: url("./assets/bg-black.avif");
+  background-color: var(--background-color);
+}
+.home__wrapper {
+  background-image: url("./assets//bg-black.avif");
   background-size: cover;
   background-position: center;
 }

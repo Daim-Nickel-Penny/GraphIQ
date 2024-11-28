@@ -12,7 +12,7 @@ export default function MainSectionCard(props: MainSectionCardProps) {
         alt="main-section-card__image"
         className="main-section-card__image"
       />
-      <h2 className="main-section-card__title">{props.title}</h2>
+      <h3 className="main-section-card__title h3">{props.title}</h3>
     </div>
   );
 }

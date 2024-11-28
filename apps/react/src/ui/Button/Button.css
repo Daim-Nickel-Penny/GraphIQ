@@ -3,11 +3,15 @@
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 600;
+
   cursor: pointer;
 
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+
   min-width: 120px;
+  max-width: 200px;
 
   transition: all 0.3s ease-in-out;
 }
@@ -20,4 +24,12 @@
 
 .button:hover {
   transform: translateY(-2px);
+}
+
+/** Media Queries for small screens */
+@media screen and (max-width: 600px) {
+  .button {
+    font-size: 0.7rem;
+    padding: 5px 10px;
+  }
 }
