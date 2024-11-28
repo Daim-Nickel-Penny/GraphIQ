@@ -4,9 +4,16 @@ import TextHighlight from "../components/TextHighlight/TextHighlight";
 import "../App.css";
 import Swiper from "../components/Swiper/Swiper";
 import OSS from "../components/OSS/OSS";
+import Footer from "../components/Footer/Footer";
 export default function Home() {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        marginBottom: "100px",
+      }}
+    >
       <div className="home__wrapper">
         <HomeHeader />
         <MainSection />
@@ -28,6 +35,8 @@ export default function Home() {
           </>
         }
       />
+
+      <Footer />
     </div>
   );
 }
