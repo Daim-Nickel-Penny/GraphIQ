@@ -111,6 +111,8 @@
   justify-content: flex-start;
   align-items: flex-start;
 
+  position: relative;
+
   width: 100%;
 
   color: white;
@@ -119,6 +121,17 @@
 .chat-window__chat-response__icon {
   opacity: 0.5;
   margin-top: 20px;
+}
+
+.chat-window__chat-copy__icon {
+  cursor: pointer;
+  position: absolute;
+  bottom: 0%;
+  right: 15%;
+}
+
+.chat-window__chat-copy__icon:hover {
+  opacity: 0.5;
 }
 
 .chat-window__chat-response__content {

@@ -81,6 +81,33 @@
 
   user-select: none;
   pointer-events: none;
+
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.9;
+  }
+}
+
+/* Fade-out animation (use when the element exits) */
+@keyframes fadeOut {
+  0% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Class to trigger fade-out animation */
+.fade-out {
+  animation: fadeOut 0.5s ease forwards;
 }
 
 .swiper-card::after {

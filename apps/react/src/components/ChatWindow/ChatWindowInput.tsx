@@ -15,6 +15,7 @@ export default function ChatWindowInput() {
   const [dragging, setDragging] = useState(false);
 
   const setIsLoading = useLoadingChatStore((state) => state.setIsLoading);
+  const isLoading = useLoadingChatStore((state) => state.isLoading);
   const addChatRequest = useChatStore((state) => state.addChatRequest);
   const addChatResponse = useChatStore((state) => state.addChatResponse);
   const getLast10ChatAsContext = useChatStore(
@@ -201,6 +202,11 @@ export default function ChatWindowInput() {
               className="chat-window__chat-request__image"
               src={base64Image}
               alt="Uploaded"
+              style={{
+                opacity: isLoading ? 0.5 : 1,
+                filter: isLoading ? "grayscale(1)" : "none",
+                borderColor: isLoading ? "var(--very-light-grey)" : "",
+              }}
             />
             <button
               className="chat-window__image-preview__remove"
@@ -236,6 +242,11 @@ export default function ChatWindowInput() {
             }
           }
         }}
+        style={{
+          color: isLoading ? "var(--very-light-grey)" : "",
+          opacity: isLoading ? 0.5 : 1,
+        }}
+        disabled={isLoading}
       ></textarea>
 
       <div className="chat-window__statusbar">

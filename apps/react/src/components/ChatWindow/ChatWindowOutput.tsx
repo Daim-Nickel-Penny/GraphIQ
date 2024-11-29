@@ -59,6 +59,14 @@ const ChatResponseComponent = ({ id, response }: IChatResponse) => {
           //set response as innerHTML
         }
       </div>
+      <div
+        className="chat-window__chat-copy__icon"
+        onClick={() => {
+          navigator.clipboard.writeText(response);
+        }}
+      >
+        <Icon name="Clipboard" color="var(--very-light-grey)" size="20px" />
+      </div>
     </div>
   );
 };
