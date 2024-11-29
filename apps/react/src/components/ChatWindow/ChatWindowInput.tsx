@@ -7,6 +7,7 @@ import useChatStore from "../../stores/chatStore";
 
 import { v4 as uuidv4 } from "uuid";
 import { IChatRequest } from "../../types/chatRequest";
+import { useTogglePresetStore } from "../../stores/togglePresetStore";
 
 export default function ChatWindowInput() {
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -21,10 +22,12 @@ export default function ChatWindowInput() {
   const getLast10ChatAsContext = useChatStore(
     (state) => state.getLast10ChatAsContext
   );
-
   const getLastChatResponse = useChatStore(
     (state) => state.getLastChatResponse
   );
+
+  const { isPresetOpen } = useTogglePresetStore();
+  const setIsPresetOpen = useTogglePresetStore((state) => state.setIsOpen);
 
   const resizeTextArea = () => {
     if (!textAreaRef.current) {
@@ -250,7 +253,11 @@ export default function ChatWindowInput() {
       ></textarea>
 
       <div className="chat-window__statusbar">
-        <div className="chat-window__statusbar__icon">
+        <div
+          className="chat-window__statusbar__icon"
+          title="Open Presets"
+          onClick={() => setIsPresetOpen(!isPresetOpen)}
+        >
           <Icon name="Menu" color="white" size="15px" />
         </div>
         <div className="chat-window__statusbar__stats">
