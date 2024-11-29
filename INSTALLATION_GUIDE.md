@@ -2,14 +2,16 @@
 
 ## Prerequisites
 
-- Node.js 18.x or higher
-- Pnpm (npm package manager)
-- Git (version control)
-- Code Editor (VSCode, Neovim, etc.)
+- Node.js 18.x or higher [Visit Node.Js Guide](https://nodejs.org/en/download/package-manager)
+- Pnpm (npm package manager) [Visit Pnpm Guide](https://pnpm.io/installation)
+- Git (version control) [Visit Git Guide](https://git-scm.com/downloads)
+- Code Editor (VSCode, Neovim, etc.) [Visit VS Code Guide](https://code.visualstudio.com/download)
 
 ## Installation Steps
 
-1. Clone the repository:
+Please open your terminal and follow these steps to install GraphIQ:
+
+1. Clone the repository by running the following command:
 
 ```bash
 git clone https://github.com/Daim-Nickel-Penny/GraphIQ.git
@@ -27,7 +29,7 @@ cd GraphIQ
 pnpm install
 ```
 
-4. Create a .env file in the root directory and add the following content:
+4. Create a `.env` file in the root directory and add the following content:
 
 ```
 GROQ_API_KEY=your-groq-api-key
@@ -43,7 +45,7 @@ GROQ_API_KEY=your-groq-api-key
 pnpm start
 ```
 
-8. Open your browser and navigate to `http://localhost:5173/chat`.
+8. Open your browser and navigate to `http://localhost:5173`.
 
 9. You are now ready to use GraphIQ!
 
@@ -73,6 +75,6 @@ pnpm install
 pnpm start
 ```
 
-4. Open your browser and navigate to `http://localhost:5173/chat`.
+4. Open your browser and navigate to `http://localhost:5173`.
 
 5. You are now up to date with the latest changes in the app.
