@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import useChatStore from "../../stores/chatStore";
 import useLoadingChatStore from "../../stores/loadingChatStore";
 import { IChatRequest } from "../../types/chatRequest";
@@ -74,11 +74,15 @@ const ChatResponseComponent = ({ id, response }: IChatResponse) => {
 export default function ChatWindowOutput() {
   const { chatRequests, chatResponses } = useChatStore();
   const { isLoading } = useLoadingChatStore();
+  const chatEndRef = useRef<HTMLDivElement>(null);
 
-  // useEffect(() => {
-  //   console.log(chatRequests);
-  //   console.log(chatResponses);
-  // }, [chatRequests, chatResponses]);
+  useEffect(() => {
+    if (chatEndRef.current) {
+      chatEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+    // console.log(chatRequests);
+    // console.log(chatResponses);
+  }, [chatRequests, chatResponses]);
 
   return (
     <div className="chat-window__output" key={"chat-window-output"}>
@@ -104,6 +108,7 @@ export default function ChatWindowOutput() {
               )}
             </div>
           ))}
+          <div ref={chatEndRef}></div>
         </>
       ) : (
         <div className="chat-window__output__greeting">

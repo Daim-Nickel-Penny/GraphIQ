@@ -144,14 +144,19 @@
   flex-direction: column;
   gap: 10px;
 
-  position: relative;
-  top: 100%;
-  transform: translateY(-100%);
+  position: absolute;
+  left: 20px;
+  right: 0;
+  bottom: 25%;
+  transform: translateY(100%);
+
+  z-index: 100;
 }
 
 .chat-window__output__loading__skeleton {
   flex-grow: 1;
   min-height: 20px;
+  max-height: 20px;
   border-radius: 5px;
   background-color: var(--grey);
   animation: skeleton-loading 0.5s linear infinite alternate;
