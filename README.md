@@ -1,22 +1,27 @@
 # GraphIQ
 
+<img alt="GraphIQ Banner" src="./assets/demo/banner-1.png" width="100%" height="auto" />
+
 GraphIQ is tool designed to streamline graph analysis. It allows you to upload graph images, parse their structure, and ask insightful questions about them. By automating the extraction of graph details such as axes, vertices, and contextual information, GraphIQ accelerates your analysis and helps uncover new insights.
 
 ---
 
 ## Features
 
-- **Graph Analysis**: Extracts graph details such as axes, vertices, and contextual information.
+- **Graph Analysis**: Extracts graph details such as statistical trends, scientific concepts, and contextual information.
 - **Question-Answering**: Enables you to ask insightful questions about the extracted graph details.
 - **Support Text and Image Input**: Accepts text and image inputs for graph analysis.
-- **No Vendor Lock-In**: No vendor lock-in, as GraphIQ can easily be integrated with other LLMs.
+- **No Vendor Lock-In**: You decide! GraphIQ can easily be integrated with other LLMs. Ofers pre-built support for **20 text & vision LLMs**.
 
 ### 🛠️ Monorepo Architecture
 
 GraphIQ utilizes a monorepo setup powered by **Turborepo**, enabling seamless development and build management:
 
-- **React Frontend**: Built using **Vite** for a fast and modern frontend development experience. Also use **Zustand** for state management.
+- **Fully Typed**: Written in `TypeScript`, ensuring type safety and code quality.
+- **React Frontend**: Built using `Vite` for a faster and optimized build. Also used `Zustand` for state management.
 - **Express.js Backend**: Provides robust API endpoints and serves static assets in production.
+- **Vitest**: Includes unit tests for the frontend and backend using `Vitest`.
+- **JsDoc**: Includes JSDoc comments for better code documentation and maintainability.
 
 ### ✨ Key Highlights
 
@@ -29,9 +34,20 @@ GraphIQ utilizes a monorepo setup powered by **Turborepo**, enabling seamless de
 
 ## Gallery
 
+<h4>Chat Home</h4>
 <img src="./assets/demo/screen-1.png" alt="screen-intro" width="1000" />
-<img src="./assets/demo/screen-2.png" alt="inital-chat" width="1000" />
+
+<h4>Easily Drag Drop Images</h4>
+<img src="./assets/demo/screen-image-request.png" alt="image request" width="1000" />
+
+<h4>Get Response</h4>
+<img src="./assets/demo/screen-image-response.png" alt="image response" width="1000" />
+
+<h4>Remebers the context</h4>
 <img src="./assets/demo/screen-3.png" alt="chat-window" width="1000" />
+
+<h4>Change the presets</h4>
+<img src="./assets/demo/screen-presets.png" alt="screen presets" width="1000" />
 
 ---
 
@@ -46,6 +62,8 @@ GraphIQ utilizes a monorepo setup powered by **Turborepo**, enabling seamless de
 ```
 
 ## Setup and Installation
+
+Additionally, you can refer to `INSTALLATION.md` for detailed installation instructions.
 
 ### 1. Clone the repository:
 
