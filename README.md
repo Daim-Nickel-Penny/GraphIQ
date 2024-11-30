@@ -1,6 +1,6 @@
 # GraphIQ
 
-<img alt="GraphIQ Banner" src="./assets/demo/banner-1.png" width="100%" height="auto" />
+<img alt="GraphIQ Banner" src="./assets/demo/christmas-banner.gif" width="100%" height="auto" style="border-radius: 8px;" />
 
 GraphIQ is tool designed to streamline graph analysis. It allows you to upload graph images, parse their structure, and ask insightful questions about them. By automating the extraction of graph details such as axes, vertices, and contextual information, GraphIQ accelerates your analysis and helps uncover new insights.
 
